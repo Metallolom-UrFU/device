@@ -1,0 +1,17 @@
+.icon-camera {
+    position: absolute;
+    left: 200px;
+    top: 144px;
+
+    width: 400px;
+    height: 300px;
+}
+
+.icon-book {
+    position: absolute;
+    left: 500px;
+    top: 44px;
+
+    width: 512px;
+    height: 512px;
+}

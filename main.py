@@ -14,9 +14,9 @@ async def render_index(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
 
-@app.get("/collect", response_class=HTMLResponse)
-async def render_collect(request: Request):
-    return templates.TemplateResponse("collect.html", {"request": request})
+@app.get("/pickup", response_class=HTMLResponse)
+async def render_pickup(request: Request):
+    return templates.TemplateResponse("pickup.html", {"request": request})
 
 
 @app.get("/return", response_class=HTMLResponse)

@@ -1,0 +1,29 @@
+html, body {
+    background-color: black;
+    min-height: 600px;
+    margin: 0;
+    width: 1024px;
+}
+
+body {
+    background-color: white;
+}
+
+.button-back {
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    display: block;
+    width: 128px;
+    line-height: 600px;
+
+    background-color: black;
+    color: white;
+
+    font-size: 100px;
+    font-weight: bold;
+
+    text-align: center;
+    text-decoration: none;
+}
