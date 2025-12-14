@@ -1,12 +1,9 @@
 async function fetchQR() {
-    let code = 0;
-    // TODO получить расшифрованный код с камеры
-    if (code !== 0) submitCode();
+    let response = await fetch("/fetch-qr");
+    let data = await response.json();
 
+    let code = data["code"];
+    if (code !== "0") window.location.replace("/return?code=" + code);
 }
 
-function submitCode() {
-    // TODO отправить код для проверки
-}
-
-const intervalId = setInterval(fetchQR, 1000);
+setInterval(fetchQR, 1000);

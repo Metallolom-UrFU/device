@@ -13,9 +13,11 @@ function removeSymbol() {
 }
 
 async function fetchQR() {
-    let code = 0;
-    // TODO получить расшифрованный код с камеры
-    if (code === 0) return;
+    let response = await fetch("/fetch-qr");
+    let data = await response.json();
+
+    let code = data["code"];
+    if (code === "0") return;
 
     let elem = document.querySelector("#input-code");
     elem.value = code;
@@ -24,8 +26,7 @@ async function fetchQR() {
 
 function submitCode() {
     let elem = document.querySelector("#input-code");
-    let value = elem.value;
-    // TODO отправить код для проверки
+    window.location.replace("/pickup?code=" + elem.value);
 }
 
-const intervalId = setInterval(fetchQR, 1000);
+setInterval(fetchQR, 1000);

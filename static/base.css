@@ -27,3 +27,13 @@ body {
     text-align: center;
     text-decoration: none;
 }
+
+h1 {
+    position: absolute;
+    left: 0;
+    top: 32px;
+    width: 1024px;
+
+    text-align: center;
+    font-family: sans-serif;
+}
