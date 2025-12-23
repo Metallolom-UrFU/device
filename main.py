@@ -5,6 +5,8 @@ from fastapi.templating import Jinja2Templates
 
 from requests import post
 
+import serial
+
 app = FastAPI(title="ShelfLocal")
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
@@ -62,8 +64,12 @@ async def render_return(request: Request, code: str | None = None):
 
 @app.get("/fetch-qr")
 async def fetch_qr():
-    # TODO считать код с камеры, раскодировать его и вернуть результат
-    return {"code": "0"}
+    ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
+    ser.flush()
+    while True:
+    if ser.in_waiting > 0:
+    line = ser.readline().decode('utf-8').rstrip()
+    return {"code": line}
 
 
 @app.get("/fetch-door")
