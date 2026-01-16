@@ -6,4 +6,4 @@ async function fetchQR() {
     if (code !== "0") window.location.replace("/return?code=" + code);
 }
 
-setInterval(fetchQR, 1000);
+setTimeout(fetchQR, 11000);

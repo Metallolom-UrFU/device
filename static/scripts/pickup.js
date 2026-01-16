@@ -29,4 +29,4 @@ function submitCode() {
     window.location.replace("/pickup?code=" + elem.value);
 }
 
-setInterval(fetchQR, 1000);
+setTimeout(fetchQR, 10000);
