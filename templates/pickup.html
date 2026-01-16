@@ -1,63 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Получить книгу</title>
-        <link rel="stylesheet" href="/static/base.css">
-        <link rel="stylesheet" href="/static/pickup.css">
-        <script type="text/javascript" src="/static/scripts/pickup.js"></script>
-    </head>
-    <body>
-        <a class="button-back" href="/">←</a>
+<head>
+    <meta charset="UTF-8">
+    <title>Получить книгу</title>
+    <link rel="stylesheet" href="/static/base.css">
+    <link rel="stylesheet" href="/static/pickup.css">
+    <script type="text/javascript" src="/static/scripts/pickup.js"></script>
+</head>
+<body>
+	<script src="/static/scripts/pickup.js" defer></script>
+    <a class="button-back" href="/">←</a>
 
-        <label for="input-code"></label>
-        <input type="text" id="input-code" maxlength="16">
+    <label for="input-code"></label>
+    <input
+        type="text"
+        id="input-code"
+        maxlength="16"
+        autofocus
+    >
 
-        <table id="input-keyboard">
-            <tr>
-                <td>
-                    <button onclick="addSymbol(1)">1</button>
-                </td>
-                <td>
-                    <button onclick="addSymbol(2)">2</button>
-                </td>
-                <td>
-                    <button onclick="addSymbol(3)">3</button>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <button onclick="addSymbol(4)">4</button>
-                </td>
-                <td>
-                    <button onclick="addSymbol(5)">5</button>
-                </td>
-                <td>
-                    <button onclick="addSymbol(6)">6</button>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <button onclick="addSymbol(7)">7</button>
-                </td>
-                <td>
-                    <button onclick="addSymbol(8)">8</button>
-                </td>
-                <td>
-                    <button onclick="addSymbol(9)">9</button>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <button onclick="removeSymbol()">✗</button>
-                </td>
-                <td>
-                    <button onclick="addSymbol(0)">0</button>
-                </td>
-                <td>
-                    <button onclick="submitCode()">✓</button>
-                </td>
-            </tr>
-        </table>
-    </body>
+    <table id="input-keyboard">
+        <tr>
+            <td><button onclick="addSymbol(1)">1</button></td>
+            <td><button onclick="addSymbol(2)">2</button></td>
+            <td><button onclick="addSymbol(3)">3</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="addSymbol(4)">4</button></td>
+            <td><button onclick="addSymbol(5)">5</button></td>
+            <td><button onclick="addSymbol(6)">6</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="addSymbol(7)">7</button></td>
+            <td><button onclick="addSymbol(8)">8</button></td>
+            <td><button onclick="addSymbol(9)">9</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="removeSymbol()">✗</button></td>
+            <td><button onclick="addSymbol(0)">0</button></td>
+            <td><button onclick="submitCode()">✓</button></td>
+        </tr>
+    </table>
+
+</body>
 </html>

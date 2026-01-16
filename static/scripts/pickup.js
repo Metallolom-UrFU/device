@@ -1,32 +1,44 @@
 function addSymbol(n) {
-    let elem = document.querySelector("#input-code");
-    let value = elem.value;
-    if (value.length >= 16) return;
-    document.querySelector("#input-code").value += n;
+    const elem = document.querySelector("#input-code");
+    if (elem.value.length >= 16) return;
+    elem.value += n;
 }
 
 function removeSymbol() {
-    let elem = document.querySelector("#input-code");
-    let value = elem.value;
-    value = value.slice(0, -1);
-    elem.value = value;
-}
-
-async function fetchQR() {
-    let response = await fetch("/fetch-qr");
-    let data = await response.json();
-
-    let code = data["code"];
-    if (code === "0") return;
-
-    let elem = document.querySelector("#input-code");
-    elem.value = code;
-    submitCode();
+    const elem = document.querySelector("#input-code");
+    elem.value = elem.value.slice(0, -1);
 }
 
 function submitCode() {
-    let elem = document.querySelector("#input-code");
-    window.location.replace("/pickup?code=" + elem.value);
+    const input = document.querySelector("#input-code");
+    const code = input.value.trim();
+    if (!code) return;
+
+
+    if (window.submittedPickup) return;
+    window.submittedPickup = true;
+
+    window.location.replace("/pickup?code=" + encodeURIComponent(code));
 }
 
-setTimeout(fetchQR, 10000);
+
+document.addEventListener("DOMContentLoaded", () => {
+    const input = document.querySelector("#input-code");
+    const form = document.querySelector("#pickup-form");
+
+    input.focus();
+    document.addEventListener("click", () => input.focus());
+    setInterval(() => input.focus(), 500);
+
+    input.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+            e.preventDefault(); 
+            submitCode();
+        }
+    });
+
+    if (form) {
+        form.addEventListener("submit", (e) => e.preventDefault());
+    }
+});
+
