@@ -10,7 +10,7 @@ class ShelfManager:
         GPIO.setmode(GPIO.BCM)
         GPIO.setwarnings(False)
 
-        self.shelves: dict[str, Shelf] = {}
+        self.shelves: list[Shelf] = []
 
         with open(config_path, "r") as f:
             config = yaml.safe_load(f)
@@ -21,15 +21,19 @@ class ShelfManager:
                 lock_pin=s["lock_pin"],
                 door_pin=s["door_pin"]
             )
-            self.shelves[shelf.id] = shelf
+            self.shelves.append(shelf)
 
         atexit.register(self.cleanup)
 
-    def get(self, shelf_id: str) -> Shelf | None:
-        return self.shelves.get(shelf_id)
+    def get_free_shelf(self) -> Shelf | None:
+        for shelf in self.shelves:
+            if shelf.is_closed() and not shelf.busy:
+                shelf.busy = True
+                return shelf
+        return None
 
-    def all(self):
-        return list(self.shelves.values())
+    def release_shelf(self, shelf: Shelf):
+        shelf.busy = False
 
     def cleanup(self):
         GPIO.cleanup()

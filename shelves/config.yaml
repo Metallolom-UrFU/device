@@ -1,10 +1,10 @@
 shelves:
-  - id: "57a5fe24-f280-4897-ba9d-4177a6174748"
+  - id: shelf_1
     lock_pin: 17
-    door_pin: 27
+    door_pin: 22
 
   - id: shelf_2
-    lock_pin: 22
+    lock_pin: 27
     door_pin: 23
 
   - id: shelf_3
