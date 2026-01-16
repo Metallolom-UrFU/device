@@ -6,7 +6,3 @@ shelves:
   - id: shelf_2
     lock_pin: 27
     door_pin: 23
-
-  - id: shelf_3
-    lock_pin: 24
-    door_pin: 25
